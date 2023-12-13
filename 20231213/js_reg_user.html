@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!--Подключение JavaScript-фреймворка jQuery -->
+    <script src="scripts/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function () {
+            //Эта функция будет выполнена сразу после загрузки страницы
+            $("#btn_go").click(function () {
+                let user_name = $("#user_name").val();
+                let user_age = $("#user_age").val();
+                let user_email = $("#user_email").val();
+                let user_password = $("#user_password").val();
+                let user_confirmation = $("#user_confirmation").val();
+
+                let error = "";
+
+                if (user_name.trim() == "")
+                    error += "Не заполнено обязательное поле Имя";
+
+                if (!/^[0-9]+$/.test(user_age))
+                    error += "Поле Возраст содержит недопустимые символы";
+                else {
+                    if (user_age < 18)
+                        error += "Вы слишком молоды";
+
+                    if (user_age > 150)
+                        error += "Вы слишком стары";
+                }
+
+                if (user_email.trim() == "")
+                    error += "Не заполнено обязательное поле Email";
+                else {
+                    if (!/^[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z0-9]+$/.test(user_email))
+                        error += "Поле Email содержит недопустимые символы";
+                }
+
+                if (error.trim() != "")
+                    $("#info").text(error);
+                else
+                    $("#info").text("");
+            });
+        });
+    </script>
+</head>
+<body>
+    Имя: <br />
+    <input id="user_name" type="text" /><br />
+    Возраст: <br />
+    <input id="user_age" type="text" /><br />
+    Email: <br />
+    <input id="user_email" type="text" /><br />
+    Пароль: <br />
+    <input id="user_password" type="password" /><br />
+    Подтверждение пароля: <br />
+    <input id="user_confirmation" type="password" /><br />
+    <input id="btn_go" type="button" value="Регистрация" /><br />
+    <p style="color: red;" id="info"></p>
+</body>
+</html>

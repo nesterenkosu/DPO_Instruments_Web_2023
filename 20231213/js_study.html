@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!--Подключение JavaScript-фреймворка jQuery -->
+    <script src="scripts/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function () {
+            //Эта функция будет выполнена сразу после загрузки страницы
+            $("#btn_go").click(function () {
+                let user_name = $("#user_name").val();
+                $("#greeting").text("Здравствуйте, " + user_name + "!");
+                //alert("Здравствуйте, "+user_name+"!");
+            });
+        });
+    </script>
+</head>
+<body>
+    Введите ваше имя: <br/>
+    <input id="user_name" type="text"/><br/>
+    <input id="btn_go" type="button" value="Нажмите на кнопку"/><br />
+    <p id="greeting"></p>
+</body>
+</html>
